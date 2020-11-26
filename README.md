@@ -1,6 +1,6 @@
 # netflix_clon
 
-A new Flutter project.
+This is for learning purposes.
 
 ## Getting Started
 
