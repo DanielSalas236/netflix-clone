@@ -51,7 +51,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  bool _validate = false;
+  bool _validateEmail = false;
+  bool _validatePass = false;
 
   @override
   void dispose() {
@@ -113,7 +114,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
             hintText: "Email",
             fillColor: Colors.white,
             filled: true,
-            errorText: _validate ? 'Please fill this field' : null),
+            errorText: _validateEmail ? 'Please fill this field' : null),
       ),
     );
   }
@@ -128,7 +129,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
             hintText: "Password",
             fillColor: Colors.white,
             filled: true,
-            errorText: _validate ? 'Please fill this field' : null),
+            errorText: _validatePass ? 'Please fill this field' : null),
       ),
     );
   }
@@ -139,10 +140,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
       onPressed: () {
         setState(() {
-          emailController.text.isEmpty ? _validate = true : _validate = false;
+          emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
           passwordController.text.isEmpty
-              ? _validate = true
-              : _validate = false;
+              ? _validatePass = true
+              : _validatePass = false;
         });
         context.read<AuthenticationService>().signIn(
             email: emailController.text.trim(),
