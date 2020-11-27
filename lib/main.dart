@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_clon/components/custom_list_tittle.dart';
 import 'package:netflix_clon/pages/index.dart';
 import 'package:netflix_clon/services/authentication_service.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +65,41 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: cuerpo(context));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Menu"),
+        backgroundColor: Colors.black38,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                  gradient:
+                      LinearGradient(colors: [Colors.black54, Colors.black87])),
+              child: Container(
+                child: Column(
+                  children: [
+                    Material(
+                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset("assets/img/netflix_logo.png", width: 70.0,),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            CustomListTitle(Icons.app_registration, 'Sign Up', () {}),
+            CustomListTitle(Icons.security, 'Terms & conditions', () {}),
+            CustomListTitle(Icons.support_agent, 'Support', () {}),
+            CustomListTitle(Icons.share, 'Share', () {}),
+          ],
+        ),
+      ),
+      body: cuerpo(context),
+    );
   }
 
   Widget cuerpo(context) {
@@ -140,7 +175,9 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
       onPressed: () {
         setState(() {
-          emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
+          emailController.text.isEmpty
+              ? _validateEmail = true
+              : _validateEmail = false;
           passwordController.text.isEmpty
               ? _validatePass = true
               : _validatePass = false;
@@ -157,3 +194,5 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
     );
   }
 }
+
+

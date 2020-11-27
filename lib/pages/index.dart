@@ -33,23 +33,23 @@ class IndexPage extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          title: Text("Inicio")
+          label: "Inicio"
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
-          title: Text("Buscar")
+          label: "Buscar"
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.new_releases),
-          title: Text("Próximamente")
+          label: "Próximamente"
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.download_sharp),
-          title: Text("Descargas")
+          label: "Descargas"
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.more),
-          title: Text("Más"),
+          label: "Más",
         ),
       ],
     );
