@@ -84,7 +84,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                       borderRadius: BorderRadius.all(Radius.circular(50.0)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/img/netflix_logo.png", width: 70.0,),
+                        child: Image.asset(
+                          "assets/img/netflix_logo.png",
+                          width: 70.0,
+                        ),
                       ),
                     )
                   ],
@@ -182,10 +185,12 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               ? _validatePass = true
               : _validatePass = false;
         });
-        context.read<AuthenticationService>().signIn(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
-            context: context);
+        if (_validateEmail == false && _validatePass == false) {
+          context.read<AuthenticationService>().signIn(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+              context: context);
+        }
       },
       child: Text(
         "Sign in",
@@ -194,5 +199,3 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
     );
   }
 }
-
-
